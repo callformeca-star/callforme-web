@@ -44,18 +44,14 @@ export async function POST(req: Request) {
     });
 
     if (!isTakeover) {
-      await new Promise((r) => setTimeout(r, 350));
+      await new Promise((r) => setTimeout(r, 400));
       await fetch(controlUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: "add-message",
-          triggerResponseEnabled: true,
-          message: {
-            role: "system",
-            content:
-              "Dongwoo has finished speaking directly and handed the call back to you. Acknowledge what was just discussed, confirm any booking or reference number, and continue assisting politely.",
-          },
+          type: "say",
+          message: "Thank you. I am back on the line to help finish this up.",
+          endCallAfterSpoken: false,
         }),
       });
     }
