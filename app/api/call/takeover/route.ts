@@ -53,11 +53,15 @@ export async function POST(req: Request) {
     });
 
     if (!isTakeover) {
-      await new Promise((r) => setTimeout(r, 400));
+      await new Promise((r) => setTimeout(r, 350));
       await postControl(controlUrl, {
-        type: "say",
-        message: "Thank you for waiting. I am back on the line for Dongwoo Go.",
-        endCallAfterSpoken: false,
+        type: "add-message",
+        triggerResponseEnabled: true,
+        message: {
+          role: "user",
+          content:
+            "[System notice: Dongwoo has finished speaking directly and handed the call back to you. Briefly say you are back on the line for Dongwoo Go and respond to the agent's latest instructions or continue the request.]",
+        },
       });
     }
 
