@@ -50,8 +50,22 @@ export async function POST(req: Request) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "say",
-          message: "Thank you. I am back on the line to help finish this up.",
+          message: "Thank you for waiting. I am back on the line to help with Dongwoo Go's request.",
           endCallAfterSpoken: false,
+        }),
+      });
+
+      await new Promise((r) => setTimeout(r, 500));
+      await fetch(controlUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "add-message",
+          triggerResponseEnabled: true,
+          message: {
+            role: "user",
+            content: "Please go ahead and continue assisting with the call.",
+          },
         }),
       });
     }
