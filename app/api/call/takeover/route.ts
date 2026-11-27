@@ -58,9 +58,9 @@ export async function POST(req: Request) {
         type: "add-message",
         triggerResponseEnabled: true,
         message: {
-          role: "system",
+          role: "assistant",
           content:
-            "Dongwoo has finished speaking directly and returned control to you. Greet the other party briefly, confirm you are back on the line for Dongwoo Go, and continue assisting politely without interrupting.",
+            "Thank you for waiting. I am back on the line for Dongwoo Go and ready to continue helping you.",
         },
       });
     }
